@@ -1,4 +1,9 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='edmt.dev.CognitiveVision'
+
+
 
 android {
     compileSdkVersion 28
@@ -29,4 +34,6 @@ dependencies {
     implementation 'org.apache.directory.studio:org.apache.commons.io:2.4'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'commons-lang:commons-lang:2.4'
+
+
 }

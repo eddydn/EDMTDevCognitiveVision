@@ -23,6 +23,6 @@ Project develop from Microsoft Project Oxford (Vision)
 
 	    VisionServiceClient visionServiceClient =
             new VisionServiceRestClient("Your API KEY",
-                    "DEFAULT API ENDPOINT"); // Ex : Endpoint : https://eastasia.api.cognitive.microsoft.com/vision/v1.0
+                    "DEFAULT API ENDPOINT"); // Ex : Endpoint : https://eastasia.api.cognitive.microsoft.com/face/v1.0
 		
 

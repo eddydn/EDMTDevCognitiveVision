@@ -16,7 +16,7 @@ Project develop from Microsoft Project Oxford (Vision)
 		
 2. Add the dependency
 
-	   implementation 'com.github.eddydn:EDMTDevCognitiveVision:1.1'
+	   implementation 'com.github.eddydn:EDMTDevCognitiveVision:1.2'
 	 
 ## Usage
 1. Declare Vision Client 

@@ -2,7 +2,7 @@ package edmt.dev.edmtdevcognitivevision;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.io.IOUtils;
+
 import org.apache.commons.lang.StringUtils;
 
 import java.io.IOException;
@@ -19,6 +19,7 @@ import edmt.dev.edmtdevcognitivevision.Contract.ModelResult;
 import edmt.dev.edmtdevcognitivevision.Contract.OCR;
 import edmt.dev.edmtdevcognitivevision.Rest.VisionServiceException;
 import edmt.dev.edmtdevcognitivevision.Rest.WebServiceRequest;
+import edmt.dev.edmtdevcognitivevision.Utils.Utils;
 
 public class VisionServiceRestClient implements VisionServiceClient  {
     private static final String DEFAULT_REGION = "westus";
@@ -63,7 +64,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String uri = WebServiceRequest.getUrl(path, params);
 
         params.clear();
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
 
         String json = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
@@ -106,7 +107,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String uri = WebServiceRequest.getUrl(path, params);
 
         params.clear();
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
 
         String json = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
@@ -139,7 +140,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String uri = WebServiceRequest.getUrl(path, params);
 
         params.clear();
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
 
         String json = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
@@ -184,7 +185,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String path = apiRoot + "/ocr";
         String uri = WebServiceRequest.getUrl(path, params);
 
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
         String json = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
         OCR ocr = this.gson.fromJson(json, OCR.class);
@@ -211,7 +212,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String path = apiRoot + "/RecognizeText?handwriting=true";
         String uri = WebServiceRequest.getUrl(path, params);
 
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
         String operationUrl = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
         HandwritingRecognitionOperation HandwrittenOCR = new HandwritingRecognitionOperation(operationUrl);
@@ -240,7 +241,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         params.put("url", url);
 
         InputStream is = (InputStream) this.restCall.request(uri, "POST", params, null, true);
-        byte[] image = IOUtils.toByteArray(is);
+        byte[] image = Utils.toByteArray(is);
         if (is != null) {
             is.close();
         }
@@ -258,11 +259,11 @@ public class VisionServiceRestClient implements VisionServiceClient  {
         String uri = WebServiceRequest.getUrl(path, params);
 
         params.clear();
-        byte[] data = IOUtils.toByteArray(stream);
+        byte[] data = Utils.toByteArray(stream);
         params.put("data", data);
 
         InputStream is = (InputStream) this.restCall.request(uri, "POST", params, "application/octet-stream", true);
-        byte[] image = IOUtils.toByteArray(is);
+        byte[] image = Utils.toByteArray(is);
         if (is != null) {
             is.close();
         }

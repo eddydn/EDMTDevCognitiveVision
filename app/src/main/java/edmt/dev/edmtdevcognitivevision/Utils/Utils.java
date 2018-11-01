@@ -51,4 +51,38 @@ public class Utils {
             throws IOException {
         return copy(input, output, DEFAULT_BUFFER_SIZE);
     }
+
+
+    public static <T> String join(final T... elements) {
+        return join(elements, null);
+    }
+
+    public static String join(final Object[] array, final char separator) {
+        if (array == null) {
+            return null;
+        }
+        return join(array, separator, 0, array.length);
+    }
+
+    public static String join(final byte[] array, final char separator) {
+        if (array == null) {
+            return null;
+        }
+        return join(array, separator, 0, array.length);
+    }
+
+    public static String join(final char[] array, final char separator) {
+        if (array == null) {
+            return null;
+        }
+        return join(array, separator, 0, array.length);
+    }
+
+    public static String join(final String[] array, final char separator) {
+        if (array == null) {
+            return null;
+        }
+        return join(array, separator, 0, array.length);
+    }
+
 }

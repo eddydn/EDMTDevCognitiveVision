@@ -3,7 +3,7 @@ package edmt.dev.edmtdevcognitivevision;
 import com.google.gson.Gson;
 
 
-import org.apache.commons.lang.StringUtils;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -273,7 +273,7 @@ public class VisionServiceRestClient implements VisionServiceClient  {
 
     private void AppendParams(Map<String, Object> params, String name, String[] args) {
         if(args != null && args.length > 0) {
-            String features = StringUtils.join(args, ',');
+            String features = Utils.join(args, ',');
             params.put(name, features);
         }
     }

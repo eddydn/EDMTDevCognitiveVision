@@ -12,6 +12,7 @@ import java.util.Map;
 
 import edmt.dev.edmtdevcognitivevision.Contract.AnalysisInDomainResult;
 import edmt.dev.edmtdevcognitivevision.Contract.AnalysisResult;
+import edmt.dev.edmtdevcognitivevision.Contract.CelebritiesResult;
 import edmt.dev.edmtdevcognitivevision.Contract.HandwritingRecognitionOperation;
 import edmt.dev.edmtdevcognitivevision.Contract.HandwritingRecognitionOperationResult;
 import edmt.dev.edmtdevcognitivevision.Contract.Model;
@@ -35,6 +36,25 @@ public class VisionServiceRestClient implements VisionServiceClient  {
     public VisionServiceRestClient(String subscriptKey, String apiRoot) {
         this.restCall = new WebServiceRequest(subscriptKey);
         this.apiRoot = apiRoot.replaceAll("/$", "");
+    }
+
+    @Override
+    public CelebritiesResult detectCelebrities(InputStream stream) throws VisionServiceException, IOException {
+        Map<String, Object> params = new HashMap<>();
+        AppendParams(params, "visualFeatures", new String[]{"Categories"});
+        AppendParams(params, "details", new String[]{"Celebrities"});
+
+        String path = apiRoot + "/analyze";
+        String uri = WebServiceRequest.getUrl(path, params);
+
+        params.clear();
+        byte[] data = Utils.toByteArray(stream);
+        params.put("data", data);
+
+        String json = (String) this.restCall.request(uri, "POST", params, "application/octet-stream", false);
+        CelebritiesResult celebritiesResult = this.gson.fromJson(json, CelebritiesResult.class);
+
+        return celebritiesResult;
     }
 
     @Override

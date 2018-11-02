@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import edmt.dev.edmtdevcognitivevision.Contract.AnalysisInDomainResult;
 import edmt.dev.edmtdevcognitivevision.Contract.AnalysisResult;
+import edmt.dev.edmtdevcognitivevision.Contract.CelebritiesResult;
 import edmt.dev.edmtdevcognitivevision.Contract.HandwritingRecognitionOperation;
 import edmt.dev.edmtdevcognitivevision.Contract.HandwritingRecognitionOperationResult;
 import edmt.dev.edmtdevcognitivevision.Contract.Model;
@@ -13,6 +14,9 @@ import edmt.dev.edmtdevcognitivevision.Contract.OCR;
 import edmt.dev.edmtdevcognitivevision.Rest.VisionServiceException;
 
 public interface VisionServiceClient {
+
+    public CelebritiesResult detectCelebrities(InputStream stream)throws VisionServiceException, IOException;
+
     public AnalysisResult analyzeImage(String url, String[] visualFeatures, String[] details) throws VisionServiceException;
 
     public AnalysisResult analyzeImage(InputStream stream, String[] visualFeatures, String[] details) throws VisionServiceException, IOException;
